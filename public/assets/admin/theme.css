@@ -1,0 +1,368 @@
+:root {
+    --la-primary: #1ccad8;
+    --la-primary-dark: #11a7bb;
+    --la-secondary: #7456e6;
+    --la-secondary-dark: #4b3abf;
+    --la-magenta: #f1568f;
+    --la-orange: #ff9f43;
+    --la-deep: #1d1a3d;
+    --la-surface: #f7f5ff;
+    --la-border: rgba(29, 26, 61, 0.12);
+    --la-text: #202036;
+    --la-muted: #6f6c8f;
+}
+
+body {
+    font-family: "Poppins", "Segoe UI", system-ui, -apple-system, BlinkMacSystemFont, sans-serif;
+    background-color: var(--la-surface);
+    color: var(--la-text);
+}
+
+a,
+.btn-link {
+    color: var(--la-primary);
+}
+
+a:hover,
+.btn-link:hover {
+    color: var(--la-magenta);
+}
+
+.btn-gradient,
+.btn-primary,
+.btn-secondary,
+.bg-semi-dark .btn-secondary {
+    background: linear-gradient(135deg, var(--la-primary) 0%, var(--la-secondary) 100%);
+    border: none;
+    color: #fff;
+    box-shadow: 0 12px 24px rgba(116, 86, 230, 0.25);
+}
+
+.btn-gradient:hover,
+.btn-primary:hover,
+.btn-secondary:hover,
+.bg-semi-dark .btn-secondary:hover {
+    background: linear-gradient(135deg, var(--la-primary-dark) 0%, var(--la-secondary-dark) 100%);
+    color: #fff;
+}
+
+.btn-secondary:focus,
+.btn-primary:focus,
+.btn-gradient:focus {
+    box-shadow: 0 0 0 0.25rem rgba(116, 86, 230, 0.32);
+}
+
+/* Login ------------------------------------------------------------------ */
+@keyframes loginGradient {
+    0% {
+        background-position: 0% 50%;
+    }
+    50% {
+        background-position: 100% 50%;
+    }
+    100% {
+        background-position: 0% 50%;
+    }
+}
+
+body.login-page {
+    min-height: 100vh;
+    position: relative;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    color: #fff;
+    background: linear-gradient(135deg, rgba(28, 202, 216, 0.75), rgba(116, 86, 230, 0.65), rgba(241, 86, 143, 0.75));
+    background-size: 200% 200%;
+    animation: loginGradient 15s ease infinite;
+    overflow: hidden;
+}
+
+body.gradient-shift {
+    will-change: background-position;
+}
+
+body.login-page.gradient-paused {
+    animation-play-state: paused;
+}
+
+body.login-page[style] {
+    background-size: cover !important;
+    background-position: center;
+    animation: none;
+}
+
+body.login-page .login-overlay {
+    position: fixed;
+    inset: 0;
+    background: rgba(17, 20, 34, 0.45);
+    backdrop-filter: blur(12px);
+    pointer-events: none;
+}
+
+body.login-page .login-shell {
+    position: relative;
+    z-index: 2;
+}
+
+.color-swirls {
+    position: fixed;
+    inset: 0;
+    overflow: hidden;
+    pointer-events: none;
+    z-index: 1;
+}
+
+.color-swirls .swirl {
+    position: absolute;
+    border-radius: 999px;
+    filter: blur(120px);
+    opacity: 0.55;
+    mix-blend-mode: screen;
+    animation: pulse 12s ease-in-out infinite;
+}
+
+.color-swirls .swirl--one {
+    width: 420px;
+    height: 420px;
+    background: var(--la-primary);
+    top: -120px;
+    left: -80px;
+}
+
+.color-swirls .swirl--two {
+    width: 360px;
+    height: 360px;
+    background: var(--la-magenta);
+    bottom: -140px;
+    right: -60px;
+    animation-delay: 3s;
+}
+
+.color-swirls .swirl--three {
+    width: 300px;
+    height: 300px;
+    background: var(--la-orange);
+    top: 40%;
+    right: 30%;
+    animation-delay: 6s;
+}
+
+@keyframes pulse {
+    0%,
+    100% {
+        transform: scale(0.9) translate3d(0, 0, 0);
+    }
+    50% {
+        transform: scale(1.15) translate3d(20px, -10px, 0);
+    }
+}
+
+.login-card {
+    background: rgba(15, 20, 40, 0.55);
+    border-radius: 24px;
+    padding: 2.75rem 2.5rem;
+    border: 1px solid rgba(255, 255, 255, 0.18);
+    backdrop-filter: blur(20px);
+    box-shadow: 0 25px 60px rgba(15, 15, 40, 0.35);
+}
+
+.login-brand {
+    color: rgba(255, 255, 255, 0.88);
+}
+
+.login-brand .brand-logo {
+    width: 84px;
+    height: 84px;
+    object-fit: contain;
+    border-radius: 26px;
+    background: rgba(255, 255, 255, 0.1);
+    padding: 12px;
+    box-shadow: 0 18px 40px rgba(28, 202, 216, 0.35);
+}
+
+.login-brand .brand-title {
+    font-size: 1.9rem;
+    font-weight: 700;
+    letter-spacing: 0.02em;
+}
+
+.login-brand .brand-subtitle {
+    font-size: 0.95rem;
+    letter-spacing: 0.1em;
+    text-transform: uppercase;
+    color: rgba(255, 255, 255, 0.65);
+}
+
+.auth-form .form-control {
+    background: rgba(255, 255, 255, 0.95);
+    border: 1px solid rgba(255, 255, 255, 0.55);
+    border-radius: 14px;
+    color: var(--la-text);
+}
+
+.auth-form .form-control:focus {
+    border-color: var(--la-secondary);
+    box-shadow: 0 0 0 0.25rem rgba(116, 86, 230, 0.25);
+}
+
+.auth-form label {
+    color: var(--la-muted);
+}
+
+.form-check-input:checked {
+    background-color: var(--la-secondary);
+    border-color: var(--la-secondary);
+}
+
+.btn-ghost {
+    background: rgba(255, 255, 255, 0.08);
+    border: 1px solid rgba(255, 255, 255, 0.22);
+    color: #fff;
+    transition: all 0.2s ease;
+}
+
+.btn-ghost:hover {
+    background: rgba(255, 255, 255, 0.18);
+    border-color: rgba(255, 255, 255, 0.35);
+    color: #fff;
+}
+
+.login-footer {
+    color: rgba(255, 255, 255, 0.72);
+    font-size: 0.85rem;
+}
+
+/* Admin layout ------------------------------------------------------------ */
+.custom-navbar {
+    background: linear-gradient(120deg, var(--la-primary) 0%, var(--la-secondary) 55%, var(--la-magenta) 100%) !important;
+    border-bottom: none;
+    box-shadow: 0 10px 25px rgba(17, 13, 40, 0.28);
+}
+
+.custom-navbar .navbar-brand {
+    color: #fff !important;
+    background: rgba(15, 17, 40, 0.35);
+    backdrop-filter: blur(6px);
+    border-right: 1px solid rgba(255, 255, 255, 0.15);
+}
+
+.custom-navbar .navbar-brand .short,
+.custom-navbar .navbar-brand .long {
+    color: #fff;
+}
+
+.custom-navbar .nav > li > a,
+.custom-navbar .link-secondary,
+.custom-navbar .dropdown-toggle,
+.custom-navbar .dropdown-menu a {
+    color: rgba(255, 255, 255, 0.82) !important;
+}
+
+.custom-navbar .nav > li > a:hover,
+.custom-navbar .dropdown-menu a:hover {
+    color: #fff !important;
+}
+
+.custom-navbar .dropdown-menu {
+    border: none;
+    padding: 0.75rem;
+    border-radius: 1rem;
+    box-shadow: 0 15px 40px rgba(15, 16, 40, 0.18);
+}
+
+.bg-semi-dark,
+#sidebar {
+    background: linear-gradient(180deg, rgba(30, 30, 50, 0.96) 0%, rgba(25, 22, 40, 0.98) 100%) !important;
+    color: rgba(255, 255, 255, 0.8);
+}
+
+#sidebar .custom-menu > ul > li > a,
+#sidebar .custom-menu > ul > li > a i,
+#sidebar .custom-menu .collapse a {
+    color: rgba(255, 255, 255, 0.72);
+    font-weight: 500;
+}
+
+#sidebar .custom-menu > ul > li > a:hover,
+#sidebar .custom-menu .collapse a:hover {
+    color: #fff;
+}
+
+#sidebar .custom-menu li.active > a,
+#sidebar .custom-menu li.active > a i,
+#sidebar .custom-menu li a:focus {
+    color: #fff;
+}
+
+#sidebar .custom-menu li.active > a {
+    background: linear-gradient(135deg, var(--la-magenta), var(--la-secondary));
+    border-radius: 12px;
+    box-shadow: 0 10px 25px rgba(116, 86, 230, 0.25);
+}
+
+#sidebar .custom-menu li .collapse {
+    border-left: 2px solid rgba(255, 255, 255, 0.1);
+    margin-left: 0.75rem;
+    padding-left: 0.35rem;
+}
+
+#main {
+    background: var(--la-surface);
+    min-height: 100vh;
+}
+
+.card,
+.box,
+.bg-body,
+.table,
+#main .content-wrapper {
+    border-radius: 18px;
+    border: 1px solid var(--la-border);
+    box-shadow: 0 18px 40px rgba(17, 13, 40, 0.04);
+}
+
+.card-header,
+.box-header,
+.table thead {
+    background: rgba(28, 202, 216, 0.08);
+    border-bottom: 1px solid rgba(28, 202, 216, 0.18);
+    color: var(--la-deep);
+    font-weight: 600;
+}
+
+.table-striped > tbody > tr:nth-of-type(odd) {
+    --bs-table-bg-type: rgba(116, 86, 230, 0.04);
+}
+
+.badge-primary,
+.label-primary {
+    background: var(--la-secondary);
+}
+
+.badge-secondary,
+.label-secondary {
+    background: var(--la-magenta);
+}
+
+#totop {
+    background: linear-gradient(135deg, var(--la-secondary), var(--la-magenta));
+    color: #fff;
+    border: none;
+    box-shadow: 0 12px 25px rgba(241, 86, 143, 0.35);
+}
+
+@media (max-width: 992px) {
+    .custom-navbar .navbar-brand {
+        border-right: none;
+        margin-bottom: 0.5rem;
+    }
+
+    #sidebar {
+        backdrop-filter: blur(16px);
+    }
+
+    .auth-card {
+        padding: 2.25rem 1.75rem;
+    }
+}
